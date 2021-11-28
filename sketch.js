@@ -3,12 +3,12 @@ var Engine = Matter.Engine,
   Events = Matter.Events,
   Bodies = Matter.Bodies;
  
-var particles = [];
-var plinkos = [];
-var divisions =[];
-var divisionHeight=300;
-var score =0;
-function setup() {
+  var particles = [];
+  var plinkos = [];
+  var divisions =[];
+  var divisionHeight=300;
+  var score =0;
+  function setup() {
   createCanvas(800, 800);
   engine = Engine.create();
   world = engine.world;
@@ -39,11 +39,6 @@ function setup() {
   for (var j = 0; j <=width-30; j=j+50) {
     plinkos.push(new Plinko(j,375));
   }
-
-  //crea los objetos partícula
-  if(frameCount%60===0){
-    particles.push(new Particle(m=random(width/2-10,width/2+10),10,10));
-  }
     
 }
  
@@ -55,6 +50,11 @@ function draw() {
  
   Engine.update(engine);
   ground.display();
+
+  //crea los objetos partícula
+  if(frameCount%60===0){
+    particles.push(new Particle(m=random(width/2-10,width/2+10),10,10));
+  }
   
   //muestra los plinkos 
   for (var i = 0; i < plinkos.length; i++) {
